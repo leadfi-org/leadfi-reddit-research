@@ -1,0 +1,36 @@
+# LeadFi Reddit Research — example configuration (read-only)
+# Copy to config.yaml and fill in. Secrets are never committed; use environment variables.
+
+mode: read_only            # the tool never writes to Reddit
+
+reddit:
+  auth: oauth2             # official Reddit Data API, read-only scope
+  # user_agent identifies the app and the operating account, per Reddit's guidance
+  user_agent: "leadfi-reddit-research/0.1 (by u/<your-reddit-account>)"
+  respect_rate_limits: true
+  client_id_env: REDDIT_CLIENT_ID          # value read from env, never stored here
+  client_secret_env: REDDIT_CLIENT_SECRET  # value read from env, never stored here
+
+# Public subreddits we READ from (we do not post in any of these)
+subreddits:
+  - smallbusiness
+  - Entrepreneur
+  - sales
+  - marketing
+  - PPC
+  - personalfinance
+  - CRedit
+  - creditrepair
+  - Mortgages
+
+# Site-wide search terms for public mentions of the company
+brand_mentions:
+  - "LeadFi"
+
+# Hard data rules — see COMPLIANCE.md
+data:
+  store_personal_data: false
+  train_ml_models_on_reddit_data: false   # never
+  redistribute_reddit_data: false         # never
+  honor_deletions: true
+  minimal_retention: true

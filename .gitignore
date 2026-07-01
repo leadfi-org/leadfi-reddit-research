@@ -1,0 +1,21 @@
+# Secrets and local config — never commit
+.env
+.env.*
+config.yaml
+*.local
+
+# Data pulled from the API stays local, never committed
+data/
+*.csv
+*.jsonl
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
