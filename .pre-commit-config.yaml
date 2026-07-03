@@ -1,0 +1,16 @@
+# Pre-commit hooks for leadfi-reddit-research (PUBLIC repo).
+# Install once:  pipx install pre-commit  (or: pip install pre-commit)
+#                pre-commit install
+# gitleaks core is MIT; pin the rev and bump deliberately.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks   # runs: gitleaks git --pre-commit --redact --staged --verbose
+  - repo: local
+    hooks:
+      - id: forbid-mcp-json
+        name: never commit .mcp.json (holds credentials — see CLAUDE.md)
+        entry: bash -c 'echo "BLOCKED: .mcp.json must never be committed in this PUBLIC repo"; exit 1'
+        language: system
+        files: '(^|/)\.mcp\.json$'
