@@ -1,12 +1,13 @@
 # CLAUDE.md — leadfi-reddit-research
 
-**THIS REPO IS PUBLIC (github.com/leadfi-org/leadfi-reddit-research). Every push is instantly
-world-readable. It is the ONLY public repo in the fleet — do not treat it like the others.**
+**THIS REPO IS PUBLIC. Every push is instantly world-readable — do not treat it like a private
+repo. Assume everything here (and everything you add) is world-visible.**
 
-- NEVER place credentials, tokens, or MCP configs here — not even untracked. The X-research MCP
-  config does NOT belong in this repo; launch X-research sessions from `project-command-stack`.
-- No internal strategy, taxonomy, competitor terms, or non-public subreddit/keyword lists — the
-  tracked `config.example.yaml` is intentionally the PUBLIC disclosure boundary.
+- NEVER place credentials, tokens, API keys, or MCP config files (`.mcp.json`) here — not even
+  untracked in the working tree. Anything that needs secrets does not belong in this repo.
+- No internal strategy, competitor terms, non-public keyword/subreddit lists, or references to
+  other internal repos or tooling. The tracked `config.example.yaml` is the intended public
+  disclosure boundary — keep everything else out.
 - This repo is a Reddit Data API access-application compliance artifact: the read-only posture in
   `COMPLIANCE.md` is a public promise. Any code added here must pass `/reddit-compliance-check`
   (no write endpoints, no scraping, deletion-honoring + retention TTL present) before merge.
