@@ -19,5 +19,5 @@ venv/
 .DS_Store
 .idea/
 .vscode/
-# MCP config — holds inline credentials; never commit (belongs in project-command-stack, not here)
+# MCP config — holds inline credentials; never commit (does not belong in this public repo)
 .mcp.json
