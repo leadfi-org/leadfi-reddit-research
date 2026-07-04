@@ -1,0 +1,12 @@
+# Extends gitleaks' default ruleset with an X/Twitter credential-shape rule.
+# Rationale: the stock "twitter" rules key on the literal word "twitter" and would MISS
+# X_BEARER_TOKEN / X_API_SECRET-shaped names. Confirm against the shipped default ruleset
+# (gitleaks detect --config) when you author this, then adjust the regex if needed.
+[extend]
+useDefault = true
+
+[[rules]]
+id = "x-api-credential"
+description = "X (Twitter) API client id / secret / bearer token by name"
+regex = '''(?i)(x|twitter)[_-]?(api|client|bearer)[_-]?(id|token|secret)['"\s:=]{1,4}([A-Za-z0-9%+/=_-]{20,})'''
+keywords = ["x_api", "x_client", "x_bearer", "twitter_api", "twitter_bearer"]
