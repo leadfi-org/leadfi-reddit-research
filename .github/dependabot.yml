@@ -1,0 +1,11 @@
+version: 2
+updates:
+  # Keep the GitHub Actions used by CI patched + SHA-pinnable
+  # No pip/npm ecosystem yet — this repo is pre-code (no requirements.txt /
+  # package.json at the time this was added). Add a pip or npm block once a
+  # matching manifest lands.
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
