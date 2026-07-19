@@ -1,17 +1,21 @@
 # LeadFi Reddit Research — example configuration (read-only)
-# Copy to config.yaml and fill in. Secrets are never committed; use environment variables.
+#
+# NOT OPERATIONAL. Reddit Data API access was requested and not granted, so this tool
+# does not run. This file is an example of the intended read-only design only. See
+# COMPLIANCE.md. Secrets are never committed; use environment variables.
 
 mode: read_only            # the tool never writes to Reddit
 
 reddit:
   auth: oauth2             # official Reddit Data API, read-only scope
-  # user_agent identifies the app and the operating account, per Reddit's guidance
-  user_agent: "leadfi-reddit-research/0.1 (by u/<your-reddit-account>)"
+  # user_agent follows Reddit's documented format: <platform>:<app id>:<version> (by /u/<user>)
+  user_agent: "python:com.leadfi.reddit-research:v0.1.0 (by /u/<your-reddit-account>)"
   respect_rate_limits: true
+  max_queries_per_minute: 5
   client_id_env: REDDIT_CLIENT_ID          # value read from env, never stored here
   client_secret_env: REDDIT_CLIENT_SECRET  # value read from env, never stored here
 
-# Public subreddits we READ from (we do not post in any of these)
+# Public subreddits the design would READ from (it never posts in any of these)
 subreddits:
   - smallbusiness
   - Entrepreneur
@@ -27,10 +31,13 @@ subreddits:
 brand_mentions:
   - "LeadFi"
 
-# Hard data rules — see COMPLIANCE.md
+# Hard data rules — see COMPLIANCE.md (design requirements; nothing runs today)
 data:
   store_personal_data: false
   train_ml_models_on_reddit_data: false   # never
   redistribute_reddit_data: false         # never
+  use_for_ad_targeting: false             # never
+  join_to_product_or_lead_data: false     # never — aggregate-only firewall
+  retention_days: 30                       # raw content deleted after this window
+  deletion_recheck_hours: 48               # re-check + hard-delete removed content
   honor_deletions: true
-  minimal_retention: true
