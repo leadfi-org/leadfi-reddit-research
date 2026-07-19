@@ -1,53 +1,55 @@
-# LeadFi Reddit Research (read-only)
+# LeadFi Reddit Research
 
-An internal, **read-only** research tool that uses the official Reddit Data API to help
-[LeadFi](https://leadfi.ai) understand the questions and problems people talk about around
-financial readiness — things like soft credit checks, credit readiness, lead qualification,
-and prequalification.
+> **Status: not operational.** LeadFi applied for read-only access to the official
+> Reddit Data API for the research described below, and **that access was not granted.**
+> As a result this tool is not running, it accesses no Reddit data, and it stores no
+> Reddit data. This repository documents the intended read-only design and the
+> compliance posture we committed to. Nothing here touches Reddit today.
 
-We read how real people describe these problems in their own words so our marketing and
-product teams can write clearer, more accurate educational content and build something that
-answers the questions people are actually asking.
+[LeadFi](https://leadfi.ai) is a for-profit company working in financial-readiness lead
+qualification. This tool was designed to help our marketing and product teams understand
+how people describe problems around things like soft credit checks and credit readiness,
+so we could write clearer, more accurate educational content.
 
-**Status:** in development.
+## What it was designed to do
 
-## What it does
+If read-only Data API access were ever granted under an appropriate agreement with Reddit,
+the tool was designed to:
 
-- Reads public posts and comments from a focused set of finance, small-business, and sales
+- Read public posts and comments from a focused set of finance, small-business, and sales
   subreddits (see `config.example.yaml`).
-- Searches for public mentions of our company name so we can keep track of what people say
-  about us.
-- Summarizes the common questions, complaints, and wording people use, for our own internal
-  research.
+- Note public mentions of the company name.
+- Summarize recurring questions, complaints, and the wording people use, for our own
+  internal research.
 
-## What it does not do
+It was designed to be strictly read-only. It has no write capability.
 
-- It does **not** post, comment, vote, or message anyone. It has no write access to Reddit and
-  won't have any under this app.
-- It is **not** a bot that participates in discussions, and it does not run automated replies.
-- It only reads public data.
+## What it does not do (and would not do)
 
-If someone from our team ever answers a question on Reddit, that's a real person doing it by
-hand from a clearly identified account, with our affiliation stated up front. That happens
-outside this tool.
+- No posting, commenting, voting, or messaging. No write access.
+- No reselling, licensing, republishing, or redistributing Reddit content or data.
+- No using Reddit content to train or fine-tune any AI or machine-learning model.
+- No profiling of individual users, and no deriving or inferring sensitive characteristics
+  about anyone.
 
-## Data handling and compliance
+Any Reddit participation by a LeadFi person is done by hand, from a named account that
+states the LeadFi affiliation, entirely outside this tool.
 
-- **Internal use only.** We don't resell, republish, or redistribute Reddit content or data.
-- **No model training.** We do not use Reddit content to train or fine-tune any AI or
-  machine-learning models.
-- **Privacy.** We keep only what we need for the research, we don't build profiles of
-  individual users, and we honor deletions and removals.
-- **Rate limits.** We stay within the Data API rate limits and follow the Reddit Data API
-  Terms and developer policies.
+## Commercial use, stated plainly
 
-See [`COMPLIANCE.md`](./COMPLIANCE.md) for the full policy this tool operates under.
+LeadFi is a business, so this would be commercial use under Reddit's definition ("any use
+by a business"). Internal-only use and not redistributing data do not make it
+non-commercial, and we do not claim otherwise. Any future access would run only under
+whatever agreement Reddit grants.
 
-## How it accesses Reddit
+## Design commitments
 
-Via the official Reddit Data API using OAuth with a read-only scope. Access is requested
-through Reddit's standard API access process. No unauthorized scraping.
+The rules the design commits to are in [`COMPLIANCE.md`](./COMPLIANCE.md). They describe
+intended behavior, not a running system. The most important one: any insight from Reddit
+would inform **aggregate** messaging and category understanding only. It would never flow
+into identifying, enriching, scoring, routing, or targeting an individual person, and no
+username would ever be stored alongside an inferred financial circumstance.
 
 ## Contact
 
-hello@leadfi.ai · https://leadfi.ai
+https://leadfi.ai
